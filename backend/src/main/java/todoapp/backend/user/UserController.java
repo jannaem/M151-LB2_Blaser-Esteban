@@ -28,4 +28,8 @@ public class UserController {
   public ResponseEntity<Role> saveRole(@RequestBody Role role) {
     return new ResponseEntity<>(userService.saveRole(role), HttpStatus.CREATED);
   }
+  @PostMapping("/signUp")
+  public ResponseEntity<User> saveUser(@RequestBody UserDTO user) {
+    return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
+  }
 }
