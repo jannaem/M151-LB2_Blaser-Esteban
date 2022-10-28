@@ -14,6 +14,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import SnackbarContext from "../../../contexts/SnackbarContext";
 import theme from "../../../../theme";
+import DeleteTaskDialog from "../../molecules/Dialogs/DeleteTaskDialog";
+import UpdateTaskDialog from "../../molecules/Dialogs/UpdateTaskDialog";
 
 interface CheckBoxProps {
   task: Task;
@@ -98,6 +100,19 @@ const TaskBox = ({
           </Grid>
         </CardContent>
       </Card>
+      <DeleteTaskDialog
+        open={openDelete}
+        handleDialog={() => handleDeletedDialog(openDelete)}
+        task={task}
+      ></DeleteTaskDialog>
+      <UpdateTaskDialog
+        title={"Edit task name"}
+        text={"Enter the new task name"}
+        label={"Name"}
+        handleDialog={() => handleUpdatedDialog(openUpdate)}
+        open={openUpdate}
+        task={task}
+      ></UpdateTaskDialog>
     </ThemeProvider>
   );
 };
