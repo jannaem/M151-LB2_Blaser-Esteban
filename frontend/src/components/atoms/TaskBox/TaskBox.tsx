@@ -13,7 +13,7 @@ import Task from "../../../models/Task";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import SnackbarContext from "../../../contexts/SnackbarContext";
-import theme from "../../../../theme";
+import theme from "../../../theme";
 import DeleteTaskDialog from "../../molecules/Dialogs/DeleteTaskDialog";
 import UpdateTaskDialog from "../../molecules/Dialogs/UpdateTaskDialog";
 

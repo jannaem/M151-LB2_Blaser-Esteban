@@ -13,7 +13,7 @@ import { useContext } from "react";
 import SnackbarContext from "../../../contexts/SnackbarContext";
 import Task from "../../../models/Task";
 import TaskService from "../../../services/TaskService";
-import theme from "../../../../theme";
+import theme from "../../../theme";
 import { DialogFormValidation } from "../../../utils/Validation";
 import "./Dialog.css";
 

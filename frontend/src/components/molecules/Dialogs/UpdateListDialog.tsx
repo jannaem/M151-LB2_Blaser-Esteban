@@ -14,7 +14,7 @@ import ToDoListService from "../../../services/ToDoListService";
 import ToDoDTO from "../../../models/ToDoDTO";
 import { useContext } from "react";
 import SnackbarContext from "../../../contexts/SnackbarContext";
-import { DialogFormValidation } from "../../Validation";
+import { DialogFormValidation } from "../../../Validation";
 import theme from "../../../theme";
 import "./TaskDialog.css";
 

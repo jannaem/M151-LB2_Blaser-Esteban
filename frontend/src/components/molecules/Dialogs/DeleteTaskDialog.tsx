@@ -11,7 +11,7 @@ import Task from "../../../models/Task";
 import TaskService from "../../../services/TaskService";
 import SnackbarContext from "../../../contexts/SnackbarContext";
 import { useContext } from "react";
-import theme from "../../../../theme";
+import theme from "../../../theme";
 
 interface DialogProps {
   handleDialog: () => void;

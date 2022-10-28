@@ -14,7 +14,7 @@ import * as Yup from "yup";
 import SnackbarContext from "../../../contexts/SnackbarContext";
 import Task from "../../../models/Task";
 import TaskService from "../../../services/TaskService";
-import theme from "../../../../theme";
+import theme from "../../../theme";
 import "./Dialog.css";
 
 interface DialogProps {
