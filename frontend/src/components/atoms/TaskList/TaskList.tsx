@@ -1,7 +1,7 @@
 import { Grid, List, Typography } from "@material-ui/core";
 import ListItem from "@mui/material/ListItem";
 import { Task } from "../../../models/Task";
-import "../TaskList/TaskListStyle.css";
+import "./TaskListStyle.css";
 import TaskBox from "../TaskBox/TaskBox";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 
