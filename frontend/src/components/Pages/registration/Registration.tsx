@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { User } from "../../../models/User";
 import ApiService from "../../../services/ApiService";
 import SnackbarContext from "../../../contexts/SnackbarContext";
-import { RegistrationFormValidation } from "../../../Validation";
+import { RegistrationFormValidation } from "../../../utils/Validation";
 import Divider from "../../atoms/Divider/Divider";
 
 interface State {
@@ -51,19 +51,24 @@ const Registration = () => {
     event.preventDefault();
   };
 
-  const handleSubmit = (
-    { username, password, email, lastName, firstName}: FormikValues  ) => {
-      const newUser : User = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        username: username,
-        password: password,
-      };
-      ApiService.post("/signUp", newUser)
+  const handleSubmit = ({
+    username,
+    password,
+    email,
+    lastName,
+    firstName,
+  }: FormikValues) => {
+    const newUser: User = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      username: username,
+      password: password,
+    };
+    ApiService.post("/signUp", newUser)
       .then(() => {
         navigate("/");
-        displaySnackbarMessage("Account created succesfully!", "success")
+        displaySnackbarMessage("Account created succesfully!", "success");
       })
       .catch((error) => {
         displaySnackbarMessage(error.response.data, "error");
@@ -103,7 +108,12 @@ const Registration = () => {
               className={"registrationCard"}
             >
               <Grid item>
-                <Typography component="h1" variant="h3" color="primary" textAlign={"center"}>
+                <Typography
+                  component="h1"
+                  variant="h3"
+                  color="primary"
+                  textAlign={"center"}
+                >
                   <b>Sign up</b>
                 </Typography>
               </Grid>
@@ -119,10 +129,15 @@ const Registration = () => {
                       value={values.firstName}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      helperText={errors.firstName && touched.firstName
-                        ? errors.firstName
-                        : null}
-                      error={errors.firstName && touched.firstName ? true : false} />
+                      helperText={
+                        errors.firstName && touched.firstName
+                          ? errors.firstName
+                          : null
+                      }
+                      error={
+                        errors.firstName && touched.firstName ? true : false
+                      }
+                    />
                   </Grid>
                   <Grid item className="registrationField" xs={12} md={6}>
                     <TextField
@@ -133,12 +148,15 @@ const Registration = () => {
                       variant="outlined"
                       name={"lastName"}
                       value={values.lastName}
-                      helperText={errors.lastName && touched.lastName
-                        ? errors.lastName
-                        : null}
+                      helperText={
+                        errors.lastName && touched.lastName
+                          ? errors.lastName
+                          : null
+                      }
                       error={errors.lastName && touched.lastName ? true : false}
                       onChange={handleChange}
-                      onBlur={handleBlur} />
+                      onBlur={handleBlur}
+                    />
                   </Grid>
                 </Grid>
                 <Grid item className="registrationField" xs={12} md={12}>
@@ -157,10 +175,13 @@ const Registration = () => {
                     variant="outlined"
                     name={"email"}
                     value={values.email}
-                    helperText={errors.email && touched.email ? errors.email : null}
+                    helperText={
+                      errors.email && touched.email ? errors.email : null
+                    }
                     error={errors.email && touched.email ? true : false}
                     onChange={handleChange}
-                    onBlur={handleBlur} />
+                    onBlur={handleBlur}
+                  />
                 </Grid>
                 <Grid item className="registrationField" xs={12} md={12}>
                   <TextField
@@ -179,10 +200,13 @@ const Registration = () => {
                     value={values.username}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    helperText={errors.username && touched.username
-                      ? errors.username
-                      : null}
-                    error={errors.username && touched.username ? true : false} />
+                    helperText={
+                      errors.username && touched.username
+                        ? errors.username
+                        : null
+                    }
+                    error={errors.username && touched.username ? true : false}
+                  />
                 </Grid>
                 <Grid item className="registrationField" xs={12} md={12}>
                   <TextField
@@ -193,9 +217,11 @@ const Registration = () => {
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    helperText={errors.password && touched.password
-                      ? errors.password
-                      : null}
+                    helperText={
+                      errors.password && touched.password
+                        ? errors.password
+                        : null
+                    }
                     error={errors.password && touched.password ? true : false}
                     label="Password"
                     InputProps={{
@@ -214,7 +240,8 @@ const Registration = () => {
                         </IconButton>
                       ),
                     }}
-                    variant="outlined" />
+                    variant="outlined"
+                  />
                 </Grid>
                 <Grid item className="registrationField" xs={12} md={12}>
                   <TextField
@@ -225,12 +252,16 @@ const Registration = () => {
                     value={values.confirmedPassword}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    helperText={errors.confirmedPassword && touched.confirmedPassword
-                      ? errors.confirmedPassword
-                      : null}
-                    error={errors.confirmedPassword && touched.confirmedPassword
-                      ? true
-                      : false}
+                    helperText={
+                      errors.confirmedPassword && touched.confirmedPassword
+                        ? errors.confirmedPassword
+                        : null
+                    }
+                    error={
+                      errors.confirmedPassword && touched.confirmedPassword
+                        ? true
+                        : false
+                    }
                     label="Confirmed Password"
                     InputProps={{
                       endAdornment: (
@@ -248,7 +279,8 @@ const Registration = () => {
                         </IconButton>
                       ),
                     }}
-                    variant="outlined" />
+                    variant="outlined"
+                  />
                 </Grid>
                 <Grid item className="registrationField" xs={12} md={12}>
                   <Button
@@ -257,7 +289,9 @@ const Registration = () => {
                     color={"primary"}
                     fullWidth
                     disabled={isSubmitting}
-                    startIcon={isSubmitting ? <CircularProgress size={"0.9rem"} /> : null}
+                    startIcon={
+                      isSubmitting ? <CircularProgress size={"0.9rem"} /> : null
+                    }
                   >
                     create account
                   </Button>
@@ -282,4 +316,3 @@ const Registration = () => {
   );
 };
 export default Registration;
-
