@@ -1,14 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { AuthenticationContextProvider } from "./contexts/AuthenticationContext";
+import { SnackbarContextProvider } from "./contexts/SnackbarContext";
+import Router from "./functional/Router";
 
 function App() {
   return (
-    <div className="App">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-    </div>
+    <React.StrictMode>
+      <SnackbarContextProvider>
+        <AuthenticationContextProvider>
+          <Router />
+        </AuthenticationContextProvider>
+      </SnackbarContextProvider>
+    </React.StrictMode>
   );
 }
 
