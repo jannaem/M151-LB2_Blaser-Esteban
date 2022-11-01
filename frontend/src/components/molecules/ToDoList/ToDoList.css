@@ -1,0 +1,24 @@
+.selectedToDo {
+  background-color: #fff;
+  border: #69cabc;
+  color: #50a8ab;
+  font-family: monospace;
+}
+
+.toDo {
+  border: 1px solid #fff;
+  border-radius: 1px;
+  font-family: monospace;
+}
+
+#list {
+  max-height: 73vh;
+  min-height: 73vh;
+  overflow: auto;
+  background: #b2ecd73a;
+  font-family: monospace;
+}
+.MuiTypography-root {
+  font-family: monospace;
+  font-weight: 300;
+}
