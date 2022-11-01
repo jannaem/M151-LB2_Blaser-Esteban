@@ -16,6 +16,8 @@ import AddButton from "../../atoms/AddButton/AddButton";
 import AddTaskDialog from "../../../components/molecules/Dialogs/AddTaskDialog";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthenticationContext";
+import JoyrideTour from "../../molecules/Joyride/JoyrideTour";
+import { joyrideStepsForList, joyrideStepsForTask } from "../../molecules/Joyride/JoyrideSteps";
 const ToDoPage = () => {
   const navigation = useNavigate();
   const { logout, principal } = useAuth();
@@ -30,10 +32,12 @@ const ToDoPage = () => {
   const [openFormDialog, setOpenFormDialog] = useState<boolean>(false);
   const [openTaskDialog, setTaskDialog] = useState<boolean>(false);
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [runTour, setRunTour] = useState<boolean>(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [openUpdateDialog, setOpenUpdateDialog] = useState(false);
   const [openDeleteListDialog, setOpenDeleteListDialog] = useState(false);
   const [openUpdateListDialog, setOpenUpdateListDialog] = useState(false);
+  const [steps, setSteps] = useState(false);
 
   const userId = "3";
   const getLists = (userId: string) => {
@@ -101,6 +105,12 @@ const ToDoPage = () => {
 
   return (
     <Grid container>
+      <JoyrideTour
+        run={runTour}
+        setRun={setRunTour}
+        steps={steps ? joyrideStepsForTask : joyrideStepsForList}
+        setSteps={setSteps}
+      />
       <Grid item md={5} xs={12} direction={"column"}>
         <List>
           <Card id={"logOutCard"}>
@@ -164,6 +174,7 @@ const ToDoPage = () => {
             >
               To Do Lists
             </Typography>
+            <HelpIcon onClick={() => setRunTour(true)} color="secondary" />
           </ListItem>
         </List>
         <ToDoList
@@ -217,7 +228,15 @@ const ToDoPage = () => {
             </Typography>
           </Grid>{" "}
           <Grid item md={1}>
-            {tasks.length > 0 && <HelpIcon color="secondary" />}
+            {tasks.length > 0 && (
+              <HelpIcon
+                onClick={() => {
+                  setSteps(true);
+                  setRunTour(true);
+                }}
+                color="secondary"
+              />
+            )}
           </Grid>
           <Grid item md={3}></Grid>{" "}
           <Grid container>

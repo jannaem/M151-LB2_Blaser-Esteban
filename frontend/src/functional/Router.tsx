@@ -4,9 +4,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../theme";
 import Login from "../components/Pages/Login/Login";
-import Registration from "../components/Pages/registration/Registration";
+import Registration from "../components/Pages/Registration/Registration";
 import ProtectedRoute from "../components/atoms/ProtectedRoute/ProtectedRoute";
 import Roles from "../models/Roles";
+import ToDoPage from "../components/Pages/ToDo/ToDoPage";
 
 const Router = () => {
   return (
@@ -23,7 +24,7 @@ const Router = () => {
                 acceptedRoles={[Roles.ROLE_ADMIN, Roles.ROLE_USER]}
               />
             }
-          ></Route>
+          ><Route path="/toDoApp" element={<ToDoPage />} /></Route>
           <Route path="/signup" element={<Registration />} />
         </Routes>
       </BrowserRouter>
